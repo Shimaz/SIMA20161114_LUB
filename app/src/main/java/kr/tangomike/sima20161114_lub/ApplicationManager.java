@@ -13,4 +13,17 @@ public class ApplicationManager extends Application {
 
 
     }
+
+    public void resetTimer(){
+
+    }
+
+
+    public void pauseTimer(){
+
+    }
+
+    public void resumeTimer(){
+
+    }
 }

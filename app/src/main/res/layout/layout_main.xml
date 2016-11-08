@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="note"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="100dp"
             />
