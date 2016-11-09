@@ -2,6 +2,10 @@ package kr.tangomike.sima20161114_lub;
 
 import android.app.Activity;
 //import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -27,16 +31,35 @@ public class MainActivity extends Activity {
     private Button btnNext;
     private Button btnBook;
     private Button btnNote;
+    private Button btnInterview;
+    private Button btnVideo;
 
     private boolean isAnimating;
+
+    private boolean isInit;
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            resetStatus();
+
+        }
+    };
+
+    private IntentFilter mFilter = new IntentFilter("shimaz.restart");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.layout_main);
+
+        registerReceiver(mReceiver, mFilter);
+
         isAnimating = false;
-        apm = (ApplicationManager) getApplicationContext();
+        isInit = true;
+        apm = (ApplicationManager)getApplicationContext();
 
 
         viewPager = (ViewPager)findViewById(R.id.pager_main);
@@ -48,8 +71,13 @@ public class MainActivity extends Activity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                dimButtons();
-                isAnimating = true;
+                if(!isInit){
+                    dimButtons();
+                    isAnimating = true;
+                }
+
+                isInit = false;
+
             }
 
             @Override
@@ -110,7 +138,6 @@ public class MainActivity extends Activity {
                 if(!isAnimating){
                     // TODO: open book activity
                 }
-                android.util.Log.i("shimaz", "" +viewPager.getCurrentItem());
             }
         });
 
@@ -122,15 +149,75 @@ public class MainActivity extends Activity {
                 apm.resetTimer();
 
                 if(!isAnimating){
-                    // TODO: open note activity
+
+                    int noteNumber = viewPager.getCurrentItem();
+
+                    Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+                    intent.putExtra("noteNumber", noteNumber);
+                    startActivity(intent);
+
+                    // TODO: Add Change Activity animation
+
+
                 }
 
-                android.util.Log.i("shimaz", "" + viewPager.getCurrentItem());
             }
         });
 
-        unDimButtons();
+
+        btnInterview = (Button)findViewById(R.id.btn_open_interview);
+        btnInterview.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                apm.resetTimer();
+                if(!isAnimating){
+
+                    Intent intent = new Intent(MainActivity.this, VideoActivity.class);
+                    intent.putExtra("videoNumber", 3);
+                    startActivity(intent);
+
+                    overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+
+                }
+
+
+
+            }
+
+
+
+        });
+
+
+        btnVideo = (Button)findViewById(R.id.btn_open_video);
+        btnVideo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                apm.resetTimer();
+                if(!isAnimating) {
+
+
+                    Intent intent = new Intent(MainActivity.this, VideoSelectActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+
+
+                }
+
+
+            }
+        });
+
+
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        isAnimating = false;
         setButtonStatus();
+        unDimButtons();
 
     }
 
@@ -173,6 +260,16 @@ public class MainActivity extends Activity {
 
 
 
+    private void resetStatus(){
+
+    }
+
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
+    }
 
 
     public class MainPageAdapter extends PagerAdapter{

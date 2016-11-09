@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/rl_main">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iv_video_top"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/common_btn_back"
+            android:id="@+id/btn_video_back"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        android:id="@+id/iv_video_bg"/>
+
+    <SeekBar
+        android:id="@+id/sb_audio"
+        android:layout_width="529dp"
+        android:layout_height="22dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="852dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        style="@style/thinBarStyle"/>
+
+    <SeekBar
+        android:id="@+id/sb_volume"
+        android:layout_width="106dp"
+        android:layout_height="22dp"
+        android:layout_marginLeft="553dp"
+        android:layout_marginTop="787dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        style="@style/thinBarStyle"/>
+
+
+</RelativeLayout>

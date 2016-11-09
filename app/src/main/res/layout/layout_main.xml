@@ -23,37 +23,40 @@
         <Button android:id="@+id/btn_main_prev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="prev"
-            android:layout_centerVertical="true"
+            android:background="@drawable/main_left_btn"
+            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
+            android:layout_marginTop="210dp"
             />
 
         <Button android:id="@+id/btn_main_next"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="next"
-            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/main_right_btn"
             />
 
 
         <Button android:id="@+id/btn_open_book"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="book"
-            android:layout_alignParentBottom="true"
+            android:background="@drawable/main_book_btn"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="164dp"
+            android:layout_marginTop="713dp"
+
             />
         <Button android:id="@+id/btn_open_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="note"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="100dp"
+            android:background="@drawable/main_note_btn"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="424dp"
+            android:layout_marginTop="713dp"
             />
 
 
@@ -68,11 +71,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_open_interview"
+            android:background="@drawable/main_interview_btn"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_open_video"/>
+            android:id="@+id/btn_open_video"
+            android:background="@drawable/main_video_btn"/>
 
 
 

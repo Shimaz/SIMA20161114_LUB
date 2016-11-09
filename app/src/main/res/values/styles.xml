@@ -5,4 +5,24 @@
         <!-- Customize your theme here. -->
     </style>
 
+
+    <style name="SingleTouch" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+    </style>
+
+    <style name="MultiTouch" parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <item name="android:windowEnableSplitTouch">true</item>
+        <item name="android:splitMotionEvents">true</item>
+    </style>
+
+
+    <style name="thinBarStyle" parent="@android:style/Widget.SeekBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_horizontal</item>
+        <item name="android:minHeight">5dip</item>
+        <item name="android:maxHeight">5dip</item>
+    </style>
+
 </resources>

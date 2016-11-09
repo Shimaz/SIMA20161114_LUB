@@ -7,17 +7,37 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
         android:name=".ApplicationManager"
         android:hardwareAccelerated="true"
         android:largeHeap="true">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/SingleTouch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".VideoSelectActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/SingleTouch">
+
+        </activity>
+        <activity android:name=".VideoActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/SingleTouch">
+
+        </activity>
+
+        <activity android:name=".NoteActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/SingleTouch">
+
+        </activity>
+
     </application>
 
 </manifest>
