@@ -26,4 +26,13 @@ public class ApplicationManager extends Application {
     public void resumeTimer(){
 
     }
+
+    public void playBGM(){
+
+    }
+
+
+    public void stopBGM(){
+
+    }
 }

@@ -37,6 +37,12 @@
             android:theme="@style/SingleTouch">
 
         </activity>
+        <activity android:name=".BookActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/MultiTouch">
+
+        </activity>
+
 
     </application>
 

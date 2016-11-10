@@ -150,13 +150,18 @@ public class MainActivity extends Activity {
 
                 if(!isAnimating){
 
-                    int noteNumber = viewPager.getCurrentItem();
+                    if(viewPager.getCurrentItem() == 2 || viewPager.getCurrentItem() == 5 || viewPager.getCurrentItem() == 8){
 
-                    Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-                    intent.putExtra("noteNumber", noteNumber);
-                    startActivity(intent);
+                    }else{
+                        int noteNumber = viewPager.getCurrentItem() + 1;
 
-                    // TODO: Add Change Activity animation
+                        Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+                        intent.putExtra("noteNumber", noteNumber);
+                        startActivity(intent);
+
+                        overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+
+                    }
 
 
                 }
@@ -223,10 +228,10 @@ public class MainActivity extends Activity {
 
     private void setButtonStatus(){
         if(viewPager.getCurrentItem() == 2 || viewPager.getCurrentItem() == 5 || viewPager.getCurrentItem() == 8){
-            btnNote.setVisibility(View.INVISIBLE);
+            btnNote.setBackgroundResource(R.drawable.main_note_btn_disabled);
 
         }else{
-            btnNote.setVisibility(View.VISIBLE);
+            btnNote.setBackgroundResource(R.drawable.main_note_btn);
         }
 
         if(viewPager.getCurrentItem() == 0){
