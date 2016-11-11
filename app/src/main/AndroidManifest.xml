@@ -43,6 +43,14 @@
 
         </activity>
 
+        <activity android:name=".PageActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/MultiTouch">
+
+        </activity>
+
+
+
 
     </application>
 

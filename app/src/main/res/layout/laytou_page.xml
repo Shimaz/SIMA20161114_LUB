@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_book_title"/>
+    
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_back"
+        android:background="@drawable/common_btn_back"/>
+    
+    <RelativeLayout
+        android:layout_width="768dp"
+        android:layout_height="864dp"
+        android:background="@drawable/book_bg_img"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="80dp">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/common_btn_back"
-            android:id="@+id/iv_book_title"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_back"/>
+            android:id="@+id/iv_page"
+            ></ImageView>
 
 
     </RelativeLayout>
 
 
-    <android.support.v4.view.ViewPager
-        android:background="#00000000"
-        android:id="@+id/pager_book"
-        android:layout_height="865dp"
-        android:layout_width="768dp"
-        >
-
-    </android.support.v4.view.ViewPager>
-
-
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
             android:background="@drawable/book_footer_btn_prev"
             android:id="@+id/btn_booK_prev"
             android:layout_marginLeft="245dp"/>
-        
+
         <TextView
             android:layout_width="118dp"
             android:layout_height="80dp"
@@ -58,10 +59,13 @@
             android:background="@drawable/book_footer_btn_next"
             android:layout_marginLeft="443dp"
             android:id="@+id/btn_book_next"/>
-        
 
 
     </RelativeLayout>
 
 
-</LinearLayout>
+
+
+    
+
+</RelativeLayout>

@@ -6,6 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.v4.view.LayoutInflaterCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +38,10 @@ public class BookActivity extends Activity {
 
     private int bookNumber;
     private TextView tvPage;
+    private ViewPager pager;
+
+
+
 
 
     @Override
@@ -51,6 +62,8 @@ public class BookActivity extends Activity {
 
 
         tvPage = (TextView)findViewById(R.id.tv_page);
+        pager = (ViewPager)findViewById(R.id.pager_book);
+
 
 
 
@@ -68,6 +81,63 @@ public class BookActivity extends Activity {
     }
 
 
+
+    public class BookViewAdapter extends PagerAdapter{
+        LayoutInflater lf;
+        int bookNumber;
+        BookData bookData;
+
+        public BookViewAdapter(LayoutInflater inflater, int bookNum, BookData bookData){
+            lf = inflater;
+            bookNumber = bookNum;
+            this.bookData = bookData;
+        }
+
+
+        @Override
+        public int getCount(){
+
+            return bookData.pageCount;
+
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int arg1, Object arg2){
+
+            container.removeView((View)arg2);
+
+        }
+
+        public Object instantiateItem(ViewGroup container, int position){
+
+            View view;
+
+            view = lf.inflate(R.layout.layout_pager_book, null);
+
+
+
+
+
+            container.addView(view);
+
+            return view;
+        }
+
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+
+            return arg0 == ((View) arg1);
+
+
+        }
+
+        @Override
+        public Parcelable saveState() {
+            return null;
+        }
+
+    }
 
 
 }

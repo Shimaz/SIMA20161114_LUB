@@ -137,8 +137,9 @@ public class MainActivity extends Activity {
                 apm.resetTimer();
                 if(!isAnimating){
                     int bookNumber = viewPager.getCurrentItem() + 1;
-                    Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                    Intent intent = new Intent(MainActivity.this, PageActivity.class);
                     intent.putExtra("bookNumber", bookNumber);
+                    intent.putExtra("pageNumber", 1);
 
                     startActivity(intent);
 
