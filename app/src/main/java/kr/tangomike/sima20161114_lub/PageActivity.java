@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -36,7 +37,11 @@ public class PageActivity extends Activity {
     private int bookNumber;
     private int pageNumber;
 
+    private TextView tvPage;
+
     private boolean isLoading;
+
+    private PhotoViewAttacher pva;
 
     @Override
     public void onCreate(Bundle sis){
@@ -50,6 +55,15 @@ public class PageActivity extends Activity {
         isLoading = false;
 
         setContentView(R.layout.laytou_page);
+
+        Button btnBack = (Button)findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+                overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+            }
+        });
 
         Button btnPrev = (Button)findViewById(R.id.btn_booK_prev);
         btnPrev.setOnClickListener(new View.OnClickListener(){
@@ -125,16 +139,31 @@ public class PageActivity extends Activity {
 
         }
 
+
+
+
+        tvPage = (TextView)findViewById(R.id.tv_page);
+
+        tvPage.setText(pageNumber + " / " + apm.getPageCount(bookNumber));
+
         String strTitle = "book_top_title_" + bookNumber + "_img";
         ImageView ivTitle = (ImageView)findViewById(R.id.iv_book_title);
         ivTitle.setImageResource(getResources().getIdentifier(strTitle, "drawable", getPackageName()));
 
 
 
-        PhotoViewAttacher pva = new PhotoViewAttacher(ivPage);
-//        pva.set
+        pva = new PhotoViewAttacher(ivPage);
+//        pva.setMaximumScale(apm.getScale(bookNumber));
         pva.update();
 
+
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        pva.setScale(0.5f);
     }
 
 
