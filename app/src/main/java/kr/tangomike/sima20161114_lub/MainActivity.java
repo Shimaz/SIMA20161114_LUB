@@ -136,7 +136,13 @@ public class MainActivity extends Activity {
             public void onClick(View v){
                 apm.resetTimer();
                 if(!isAnimating){
-                    // TODO: open book activity
+                    int bookNumber = viewPager.getCurrentItem() + 1;
+                    Intent intent = new Intent(MainActivity.this, BookActivity.class);
+                    intent.putExtra("bookNumber", bookNumber);
+
+                    startActivity(intent);
+
+                    overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
                 }
             }
         });
