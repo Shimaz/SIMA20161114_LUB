@@ -100,9 +100,11 @@ public class VideoActivity extends Activity implements Runnable{
 
                 if(vv.isPlaying()){
                     vv.pause();
+                    apm.startTimer();
                     btnPlayPause.setBackgroundResource(R.drawable.audiobook_btn_play);
                 }else{
                     vv.start();
+                    apm.pauseTimer();
                     btnPlayPause.setBackgroundResource(R.drawable.audiobook_btn_pause);
                 }
 
@@ -216,6 +218,7 @@ public class VideoActivity extends Activity implements Runnable{
             public void onPrepared(MediaPlayer mediaPlayer) {
                 videoDuration = vv.getDuration();
                 setupLeftovers();
+                apm.pauseTimer();
             }
         });
 
@@ -231,6 +234,7 @@ public class VideoActivity extends Activity implements Runnable{
             public void onCompletion(MediaPlayer mediaPlayer) {
                 sbAudio.setProgress(0);
                 btnPlayPause.setBackgroundResource(R.drawable.audiobook_btn_play);
+                apm.startTimer();
             }
         });
 

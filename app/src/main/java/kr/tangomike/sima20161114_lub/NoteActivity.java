@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -52,6 +53,8 @@ public class NoteActivity extends Activity {
             @Override
             public void onClick(View v){
 
+                apm.resetTimer();
+
                 finish();
                 overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
 
@@ -83,6 +86,17 @@ public class NoteActivity extends Activity {
 
             lrText.addView(iv);
         }
+
+        lrText.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                apm.resetTimer();
+
+                return false;
+            }
+
+        });
 
 
 

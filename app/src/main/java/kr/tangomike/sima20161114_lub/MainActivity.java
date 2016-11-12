@@ -78,11 +78,17 @@ public class MainActivity extends Activity {
 
                 isInit = false;
 
+
+                apm.resetTimer();
+
             }
 
             @Override
             public void onPageSelected(int position) {
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
 
             }
 
@@ -96,7 +102,8 @@ public class MainActivity extends Activity {
 
                 }
 
-                android.util.Log.i("shimaz", "" + state);
+                apm.resetTimer();
+
 
             }
         });
@@ -106,6 +113,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
                 if(viewPager.getCurrentItem() + 1 != adapter.getCount()){
                     viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
                 }
@@ -120,7 +130,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
-
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
                 if(viewPager.getCurrentItem() != 0){
 
                     viewPager.setCurrentItem((viewPager.getCurrentItem() - 1));
@@ -135,6 +147,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
                 if(!isAnimating){
                     int bookNumber = viewPager.getCurrentItem() + 1;
                     Intent intent = new Intent(MainActivity.this, PageActivity.class);
@@ -154,6 +169,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
 
                 if(!isAnimating){
 
@@ -182,6 +200,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
                 if(!isAnimating){
 
                     Intent intent = new Intent(MainActivity.this, VideoActivity.class);
@@ -206,6 +227,9 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v){
                 apm.resetTimer();
+                if(!apm.isTimerTicking()){
+                    apm.startTimer();
+                }
                 if(!isAnimating) {
 
 
@@ -230,6 +254,8 @@ public class MainActivity extends Activity {
         isAnimating = false;
         setButtonStatus();
         unDimButtons();
+
+        apm.playBGM();
 
     }
 
@@ -273,6 +299,9 @@ public class MainActivity extends Activity {
 
 
     private void resetStatus(){
+
+        viewPager.setCurrentItem(0);
+//        apm.pauseTimer();
 
     }
 

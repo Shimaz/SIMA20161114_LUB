@@ -1,6 +1,8 @@
 package kr.tangomike.sima20161114_lub;
 
 import android.app.Application;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 
@@ -19,8 +21,11 @@ public class ApplicationManager extends Application {
     private Handler mHandler;
 
     private int tickTime;
-    private int TIMER_TIME = 30;
+    private int TIMER_TIME = 60;
     private boolean isTicking;
+
+
+    private MediaPlayer bgm;
 
     public void onCreate(){
         super.onCreate();
@@ -58,15 +63,28 @@ public class ApplicationManager extends Application {
         isTicking = false;
 
 
+        bgm = MediaPlayer.create(getApplicationContext(), R.raw.bgm);
+        bgm.setLooping(true);
+
+
         mHandler = new Handler(){
             public void handleMessage(Message msg){
 
                 if(isTicking) tickTime++;
-                if(tickTime >= TIMER_TIME){
+
+                if(tickTime <= TIMER_TIME){
+
+                    mHandler.sendEmptyMessageDelayed(0, 1000);
+                    android.util.Log.i("shimaz", "" + tickTime);
+
+                }else if(tickTime > TIMER_TIME){
+                    tickTime = 0;
                     isTicking = false;
+                    mHandler.removeMessages(0);
 
+                    Intent intent = new Intent("shimaz.restart");
 
-
+                    sendBroadcast(intent);
                 }
 
 
@@ -75,31 +93,57 @@ public class ApplicationManager extends Application {
 
     }
 
-    private boolean isTimerTicking(){
+    public boolean isTimerTicking(){
         return isTicking;
     }
 
     public void resetTimer(){
+
+        tickTime = 0;
 
     }
 
 
     public void pauseTimer(){
 
+        isTicking = false;
+        mHandler.removeMessages(0);
+        tickTime = 0;
+
+
     }
 
-    public void resumeTimer(){
+    public void startTimer(){
+
+        tickTime = 0;
+        isTicking = true;
+        mHandler.sendEmptyMessageDelayed(0, 1000);
+
+
 
     }
 
     public void playBGM(){
+
+        if(!bgm.isPlaying()){
+            bgm.start();
+        }
 
     }
 
 
     public void stopBGM(){
 
+        if(bgm.isPlaying()){
+            bgm.pause();
+        }
+
+
     }
+
+//    public boolean isBGMPlaying(){
+//        return bgm.isPlaying();
+//    }
 
     public float getScale(int bookNum){
 

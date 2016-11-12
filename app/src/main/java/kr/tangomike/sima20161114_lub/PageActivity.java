@@ -5,8 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -67,6 +69,7 @@ public class PageActivity extends Activity {
         btnBack.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                apm.resetTimer();
                 finish();
                 overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
             }
@@ -172,6 +175,36 @@ public class PageActivity extends Activity {
 
         rlPage = (RelativeLayout)findViewById(R.id.rl_page);
         rlPage.setAlpha(1.0f);
+
+
+
+        pva.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
+            @Override
+            public void onPhotoTap(View view, float x, float y) {
+                apm.resetTimer();
+            }
+
+            @Override
+            public void onOutsidePhotoTap() {
+
+            }
+        });
+
+        pva.setOnScaleChangeListener(new PhotoViewAttacher.OnScaleChangeListener() {
+            @Override
+            public void onScaleChange(float scaleFactor, float focusX, float focusY) {
+                apm.resetTimer();
+            }
+        });
+
+
+        pva.setOnMatrixChangeListener(new PhotoViewAttacher.OnMatrixChangedListener() {
+            @Override
+            public void onMatrixChanged(RectF rect) {
+                apm.resetTimer();
+            }
+        });
+
     }
 
     @Override
