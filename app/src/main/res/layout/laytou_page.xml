@@ -18,7 +18,8 @@
         android:layout_height="864dp"
         android:background="@drawable/book_bg_img"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="80dp"
+        android:id="@+id/rl_page">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rl_bottom">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,9 +51,11 @@
 
         <TextView
             android:layout_width="118dp"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:id="@+id/tv_page"
-            android:textColor="#ff0000"
+            android:textColor="#282828"
+            android:textSize="29sp"
             android:textAlignment="center"
             android:layout_marginLeft="325dp"/>
 

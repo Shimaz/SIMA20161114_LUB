@@ -91,8 +91,9 @@ public class NoteActivity extends Activity {
 
     @Override
     public void onDestroy(){
-        super.onDestroy();
         unregisterReceiver(mReceiver);
+        super.onDestroy();
+
     }
 
 
