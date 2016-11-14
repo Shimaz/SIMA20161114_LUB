@@ -45,7 +45,7 @@
             android:background="@drawable/main_book_btn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="164dp"
+            android:layout_marginLeft="424dp"
             android:layout_marginTop="713dp"
 
             />
@@ -55,7 +55,7 @@
             android:background="@drawable/main_note_btn"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="424dp"
+            android:layout_marginLeft="164dp"
             android:layout_marginTop="713dp"
             />
 

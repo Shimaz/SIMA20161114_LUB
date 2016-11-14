@@ -156,7 +156,7 @@ public class PageActivity extends Activity {
 
         tvPage = (TextView)findViewById(R.id.tv_page);
 
-        tvPage.setText(pageNumber + " / " + apm.getPageCount(bookNumber));
+        tvPage.setText(pageNumber + " / " + apm.getPageCount(bookNumber - 1));
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "bmdohyun_otf.otf");
         tvPage.setTypeface(tf);
